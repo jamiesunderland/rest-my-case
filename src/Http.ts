@@ -82,7 +82,7 @@ export default class Http {
   }
 
   public async request<T, U>(method: HttpMethod, uri: string, data: any): ResponseType<T> {
-    const http: Http = await this._requestHook(this);
+    const http: Http = await this._requestHook(this, this._headers, data);
     const serverCaseData = this.caseConverter.convertToServerCase(data);
     const rawResponse: HttpResponse = await this.fetch(method, uri, data)
     const checkedResponse: HttpResponse = http.checkResponse(rawResponse);
