@@ -8,6 +8,7 @@ export { RequestHook, ResponseHook } from './interfaces/Hooks';
 export {default as HttpConfig} from './HttpConfig';
 export {default as Http} from './Http';
 export {default as HttpMethod} from './HttpMethod';
+export {default as RmcHttp } from './Rmc';
 import Rmc from './Rmc';
 
 export default Rmc;
