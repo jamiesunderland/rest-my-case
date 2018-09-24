@@ -1,13 +1,19 @@
 {
     "compilerOptions": {
-      "lib": ["es5", "es6", "dom"],
       "outDir": "./dist/",
       "sourceMap": true,
       "noImplicitAny": true,
       "removeComments": true,
+      "declaration": true,
       "module": "commonjs",
       "target": "es6",
-      "moduleResolution": "node"
+      "moduleResolution": "node",
+      "lib": [
+        "es5",
+        "es6",
+        "dom",
+        "esnext.asynciterable"
+      ]
     },
     "include": [
       "src/**/*.ts"

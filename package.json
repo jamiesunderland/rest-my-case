@@ -2,8 +2,10 @@
   "name": "rest_my_case",
   "version": "1.0.0",
   "description": "An http request helper for converting between cases",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types" : "dist/index.d.ts",
   "scripts": {
+    "postinstall": "tsc",
     "test": "./node_modules/.bin/jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "test:coverage": "node ./node_modules/jest/bin/jest.js --coverage",
