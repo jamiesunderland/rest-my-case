@@ -101,9 +101,11 @@ export default class Http {
   private fetch<T>(method: HttpMethod, uri: string, data: any): Promise<any> {
     const requestUrl = this.httpStringHelper.requestUrl(uri, this._uriPrefix, this._queryString);
     if (method === HttpMethod.GET) {
+      const emptyBody: any = {};
       return fetch(requestUrl, {
         headers: this._headers,
-        method
+        method,
+        ...emptyBody
       });
     }
     return fetch(requestUrl, {

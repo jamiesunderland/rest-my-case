@@ -12,8 +12,8 @@ export default class HttpConfig {
 
   public static readonly HTTP: string = 'http';
 
-  public serverCase: (string) => string = snakeCase;
-  public clientCase: (string) => string = camelCase;
+  public serverCase: (str: string) => string = snakeCase;
+  public clientCase: (str: string) => string = camelCase;
 
   public headers: Headers = {
       'Accept': 'application/json',

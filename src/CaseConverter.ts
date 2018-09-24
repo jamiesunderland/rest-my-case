@@ -8,9 +8,9 @@ export default class CaseConverter {
     this.config = config;
   }
 
-  private convertCase(data = {}, caseFunction: (str: string) => string) : any {
+  private convertCase(caseFunction: (str: string) => string, data = {} as any) : any {
     if (data instanceof Array) {
-      return data.map((obj: any) => this.convertCase(obj, caseFunction));
+      return data.map((obj: any) => this.convertCase(caseFunction, obj));
     }
     return Object.keys(data || {}).reduce((newData: any, key: string) => {
       const value:any = data[key];
@@ -30,16 +30,16 @@ export default class CaseConverter {
 
   private newCaseValue(value: any, caseFunction: (str: string) => string): any {
     if (value instanceof Object) {
-      return this.convertCase(value, caseFunction);
+      return this.convertCase(caseFunction, value);
     }
     return value;
   }
 
   public convertToServerCase(data: any): any {
-    return this.convertCase(data, this.config.serverCase);
+    return this.convertCase(this.config.serverCase, data);
   }
 
   public convertToClientCase(data: any): any {
-    return this.convertCase(data, this.config.clientCase);
+    return this.convertCase(this.config.clientCase, data);
   }
 }
