@@ -130,7 +130,6 @@ export default class Http {
       };
     }
     const body = await response.json();
-    debugger;
     const payload: T = this.caseConverter.convertToClientCase(body);
     return {
       status: response.status,
