@@ -8,13 +8,7 @@ By default the client case is camelCase and the server case is snake_case. You c
 
 ### How it works
                     
-```seq
-Note left of Client:  client receives\n request data \n{ someData: 123 }
-Client->Server: rmc sends \n{some_data:  123}
-Server-->Client: rmc receives \n{ server_data: 123 } 
-Note left of Client:  rmc converts \nresponse data to \n{ serverData: 123 }
-
-```
+![alt text](https://github.com/jamiesunderland/rest-my-case/blob/master/diagram.png)
 
 ### Installation
 
