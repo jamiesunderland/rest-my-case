@@ -20,6 +20,10 @@
     "save-dev": "^2.0.0",
     "ts-node": "^4.1.0"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/jamiesunderland/rest_my_case.git"
+  },
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
     "@types/jest": "^22.1.2",
