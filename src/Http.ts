@@ -12,11 +12,6 @@ import ResponseType from './interfaces/ResponseType';
 import Headers from './interfaces/Headers';
 import { RequestHook, ResponseHook } from './interfaces/Hooks';
 
-// This is to help the compiler from giving bad warnings
-// See https://github.com/Microsoft/TypeScript/issues/12776
-const ResponseType = Promise;
-const HttpRequest = Promise;
-
 export default class Http {
 
   private static readonly EMPTY_RESPONSE: number = 204;
