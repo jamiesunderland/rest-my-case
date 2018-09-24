@@ -28,7 +28,7 @@ export default class HttpConfig {
 
   public hostname: string = null; 
   public port: number = null; 
-  public protocol: string = null; 
+  private protocol: string = null; 
 
   public useHttp() {
     this.protocol = 'http';
