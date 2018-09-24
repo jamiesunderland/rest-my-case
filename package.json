@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamiesunderland/rest_my_case.git"
+    "url": "https://github.com/jamiesunderland/rest-my-case.git"
   },
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
