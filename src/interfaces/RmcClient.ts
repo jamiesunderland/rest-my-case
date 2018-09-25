@@ -18,7 +18,7 @@ export default interface RmcClient {
   responseHook(responseHook: ResponseHook):  Http;
   responseHook(responseHook: ResponseHook):  Http;
   request<T, U>(method: HttpMethod, uri: string, query: string | {}): ResponseType<T|U>;
-  get<T, U>(uri: string, query: string | {}): ResponseType<T|U>;
+  get<T, U>(uri: string, query?: string | {}): ResponseType<T|U>;
   post<T, U>(uri: string, param: {}): ResponseType<T|U>;
   put<T, U>(uri: string, param: {}): ResponseType<T|U>;
   patch<T, U>(uri: string, param: {}): ResponseType<T|U>;
