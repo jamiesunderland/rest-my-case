@@ -35,40 +35,40 @@ export default (config: HttpConfig = new HttpConfig()): RmcClient  => {
       return Http.default(config).get<T, U>(uri, query);
     },
 
-    get: <T, U>(uri: string, query: string | {}): ResponseType<T|U> => {
+    get: <T, U>(uri: string, query?: string | {}): ResponseType<T|U> => {
       return Http.default(config).get<T, U>(uri, query);
     },
 
-    post: <T, U>(uri: string, query: {}): ResponseType<T|U> => {
-      return Http.default(config).post<T, U>(uri, query);
+    post: <T, U>(uri: string, params: {}): ResponseType<T|U> => {
+      return Http.default(config).post<T, U>(uri, params);
     },
 
-    put: <T, U>(uri: string, query: {}): ResponseType<T|U> => {
-      return Http.default(config).put<T, U>(uri, query);
+    put: <T, U>(uri: string, params: {}): ResponseType<T|U> => {
+      return Http.default(config).put<T, U>(uri, params);
     },
 
-    patch: <T, U>(uri: string, query: {}): ResponseType<T|U> => {
-      return Http.default(config).patch<T, U>(uri, query);
+    patch: <T, U>(uri: string, params: {}): ResponseType<T|U> => {
+      return Http.default(config).patch<T, U>(uri, params);
     },
 
-    delete: <T, U>(uri: string, query: {}): ResponseType<T|U> => {
-      return Http.default(config).delete<T, U>(uri, query);
+    delete: <T, U>(uri: string, params: {}): ResponseType<T|U> => {
+      return Http.default(config).delete<T, U>(uri, params);
     },
 
-    options: <T, U>(uri: string, query: {}): ResponseType<T|U> => {
-      return Http.default(config).options<T, U>(uri, query);
+    options: <T, U>(uri: string, params: {}): ResponseType<T|U> => {
+      return Http.default(config).options<T, U>(uri, params);
     },
 
-    head: <T, U>(uri: string, query: {}): ResponseType<T|U> => {
-      return Http.default(config).head<T, U>(uri, query);
+    head: <T, U>(uri: string, params: {}): ResponseType<T|U> => {
+      return Http.default(config).head<T, U>(uri, params);
     },
 
-    connect: <T, U>(uri: string, query: {}): ResponseType<T|U> => {
-      return Http.default(config).connect<T, U>(uri, query);
+    connect: <T, U>(uri: string, params: {}): ResponseType<T|U> => {
+      return Http.default(config).connect<T, U>(uri, params);
     },
 
-    trace: <T, U>(uri: string, query: {}): ResponseType<T|U> => {
-      return Http.default(config).trace<T, U>(uri, query);
+    trace: <T, U>(uri: string, params: {}): ResponseType<T|U> => {
+      return Http.default(config).trace<T, U>(uri, params);
     },
 
     convertToServerCase(data: any): any {
