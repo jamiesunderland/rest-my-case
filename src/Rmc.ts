@@ -8,13 +8,11 @@ import HttpRequest from './interfaces/HttpRequest';
 import HttpPayload from './interfaces/HttpPayload';
 import ResponseType from './interfaces/ResponseType';
 import Headers from './interfaces/Headers';
-import RmcClient, { RmcClientCreator } from './interfaces/RmcClient';
+import RmcClient from './interfaces/RmcClient';
 import { RequestHook, ResponseHook } from './interfaces/Hooks';
 
-export default (): RmcClientCreator => {
-  let config: HttpConfig = new HttpConfig();
-  return ((config: HttpConfig): RmcClient => ({
-
+export default (config: HttpConfig = new HttpConfig()): RmcClient  => {
+  return {
     config,
 
     headers: (headers: Headers): Http => {
@@ -80,5 +78,5 @@ export default (): RmcClientCreator => {
     convertToClientCase(data: any): any {
       return (new CaseConverter(config)).convertToClientCase(data);
     },
-  }))(config);
+  };
 };

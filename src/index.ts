@@ -3,8 +3,8 @@ export {default as HttpRequest} from './interfaces/HttpRequest';
 export {default as HttpPayload} from './interfaces/HttpPayload';
 export {default as ResponseType} from './interfaces/ResponseType';
 export {default as Headers} from './interfaces/Headers';
+export {default as RmcClient} from './interfaces/RmcClient';
 export { RequestHook, ResponseHook } from './interfaces/Hooks';
-export {default as RmcClient, RmcClientCreator } from './interfaces/RmcClient';
 
 export {default as HttpConfig} from './HttpConfig';
 export {default as Http} from './Http';

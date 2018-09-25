@@ -29,7 +29,9 @@ config.useHttps();
 //also not necessary but all requests will be prefixed with this sub route
 config.uriPrefix = 'api/v1';
 
-let client: RmcClient = Rmc()(config);
+let client: RmcClient = Rmc(config);
+// OR if you have no need for a config
+// let client: RmcClient = Rmc();
 
 export default client;
 

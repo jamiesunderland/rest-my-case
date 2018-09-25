@@ -30,5 +30,3 @@ export default interface RmcClient {
   convertToServerCase(data: any) : any;
   convertToClientCase(data: any) : any;
 }
-
-export type RmcClientCreator = (config: HttpConfig) => RmcClient;
