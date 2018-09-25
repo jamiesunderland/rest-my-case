@@ -8,32 +8,12 @@ import HttpRequest from './interfaces/HttpRequest';
 import HttpPayload from './interfaces/HttpPayload';
 import ResponseType from './interfaces/ResponseType';
 import Headers from './interfaces/Headers';
+import RmcClient, { RmcClientCreator } from './interfaces/RmcClient';
 import { RequestHook, ResponseHook } from './interfaces/Hooks';
 
-export interface RmcHttp {
-  config: HttpConfig,
-  headers(headers: Headers):  Http;
-  uriPrefix(uriPrefix: string):  Http;
-  requestHook(requestHook: RequestHook):  Http;
-  responseHook(responseHook: ResponseHook):  Http;
-  responseHook(responseHook: ResponseHook):  Http;
-  request<T, U>(method: HttpMethod, uri: string, query: string | {}): ResponseType<T|U>;
-  get<T, U>(uri: string, query: string | {}): ResponseType<T|U>;
-  post<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  put<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  patch<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  delete<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  options<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  head<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  connect<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  trace<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  convertToServerCase(data: any) : any;
-  convertToClientCase(data: any) : any;
-}
-
-export default () => {
+export default (): RmcClientCreator => {
   let config: HttpConfig = new HttpConfig();
-  return ((config: HttpConfig): RmcHttp => ({
+  return ((config: HttpConfig): RmcClient => ({
 
     config,
 

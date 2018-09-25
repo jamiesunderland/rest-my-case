@@ -16,8 +16,8 @@ By default the client case is camelCase and the server case is snake_case. You c
 
 ### Creating a client
 ```javascript
-//client.js
-import Rmc, { HttpConfig } from 'rest-my-case';
+// client.ts
+import Rmc, { HttpConfig, RmcClient } from './index';
 
 let config = new HttpConfig();
 //not necessary if you're hosting this from your website
@@ -28,7 +28,9 @@ config.port = 3000;
 config.useHttps();
 //also not necessary but all requests will be prefixed with this sub route
 config.uriPrefix = 'api/v1';
+let client: RmcClient = Rmc()(config);
 
-export default Rmc()(config);
+export default client;
+
 ```
 
