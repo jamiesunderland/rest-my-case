@@ -17,7 +17,7 @@ By default the client case is camelCase and the server case is snake_case. You c
 ### Creating a client
 ```javascript
 // client.ts
-import Rmc, { HttpConfig, RmcClient } from './index';
+import Rmc, { HttpConfig, RmcClient } from 'rest-my-case';
 
 let config = new HttpConfig();
 //not necessary if you're hosting this from your website
