@@ -28,6 +28,7 @@ config.port = 3000;
 config.useHttps();
 //also not necessary but all requests will be prefixed with this sub route
 config.uriPrefix = 'api/v1';
+
 let client: RmcClient = Rmc()(config);
 
 export default client;
