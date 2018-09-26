@@ -89,4 +89,44 @@ async function queryExamples() {
 }
 
 ```
+#### Adding custom headers
+```javascript
+import client from './client';
 
+
+async function headerExamples() {
+    // You can override the headers by calling the headers method prior to the request
+    const getSerializedQueryResponse = await client
+                                             .headers({'Content-Type': 'application/x-www-form-urlencoded'})
+                                             .get<SuccessfulResponse>('abc');
+    /*
+    The default headers are
+      public headers: Headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+    */
+}
+
+```
+#### Adding a request hook
+```javascript
+// A request hook can be added to the Http object if it is only used once. However, if you want your client to run a response hook with each request you must set it in the HttpConfig.
+
+// client.ts
+import Rmc, { HttpConfig, RmcClient, Http, Headers } from 'rest-my-case';
+
+let config = new HttpConfig();
+
+// This request hook ensures that if an authorization token exists in localstorage it will be set in the
+// request's headers
+config.requestHook = (http: Http, headers: Headers, data) : Http => {
+  let authorizationToken = localStorage.get('token');
+  if (authorizationToken !== undefined) {
+    return http.headers({...headers, 'Authorization': authorizationToken});
+  }
+  return http;
+}
+
+export default client;
+```
