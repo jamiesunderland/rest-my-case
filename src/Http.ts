@@ -76,13 +76,13 @@ export default class Http {
     return this;
   }
 
-  public async request<T, U>(method: HttpMethod, uri: string, data: any): ResponseType<T> {
+  public async request<T>(method: HttpMethod, uri: string, data: any): ResponseType<T> {
     const http: Http = await this._requestHook(this, this._headers, data);
     const serverCaseData = this.caseConverter.convertToServerCase(data);
     const rawResponse: HttpResponse = await this.fetch(method, uri, data)
     const checkedResponse: HttpResponse = http.checkResponse(rawResponse);
     const response = await http._responseHook(checkedResponse);
-    return http.processResponse<T, U>(response)
+    return http.processResponse<T>(response)
     .then(v => Http.handleUnwrapping<T>(this.config, v));
   }
 
@@ -118,9 +118,9 @@ export default class Http {
     return response.ok ? response : new HttpError(response, this.config);
   }
 
-  protected async processResponse<T, U>(response: HttpResponse): HttpRequest<T> {
+  protected async processResponse<T>(response: HttpResponse): HttpRequest<T> {
     if (response instanceof HttpError) {
-      return await response.json<U>();
+      return await response.json();
     }
     if (response.status == Http.EMPTY_RESPONSE) {
       return {
@@ -138,39 +138,39 @@ export default class Http {
     };
   }
 
-  public async get<T, U>(uri: string, query: string | {} = {}): ResponseType<T|U> {
-    return await this.query(query).request<T, U>(HttpMethod.GET, uri, null);
+  public async get<T>(uri: string, query: string | {} = {}): ResponseType<T> {
+    return await this.query(query).request<T>(HttpMethod.GET, uri, null);
   }
 
-  public async post<T, U>(uri: string, params: {}): ResponseType<T|U> {
-    return await this.request<T, U>(HttpMethod.POST, uri, params);
+  public async post<T>(uri: string, params: {}): ResponseType<T> {
+    return await this.request<T>(HttpMethod.POST, uri, params);
   }
 
-  public async put<T, U>(uri: string, params: {}): ResponseType<T|U> {
-    return await this.request<T, U>(HttpMethod.PUT, uri, params);
+  public async put<T>(uri: string, params: {}): ResponseType<T> {
+    return await this.request<T>(HttpMethod.PUT, uri, params);
   }
 
-  public async patch<T, U>(uri: string, params: {}): ResponseType<T|U> {
-    return await this.request<T, U>(HttpMethod.PATCH, uri, params);
+  public async patch<T>(uri: string, params: {}): ResponseType<T> {
+    return await this.request<T>(HttpMethod.PATCH, uri, params);
   }
 
-  public async delete<T, U>(uri: string, params: {}): ResponseType<T|U> {
-    return await this.request<T, U>(HttpMethod.DELETE, uri, params);
+  public async delete<T>(uri: string, params: {}): ResponseType<T> {
+    return await this.request<T>(HttpMethod.DELETE, uri, params);
   }
 
-  public async options<T, U>(uri: string, params: {}): ResponseType<T|U> {
-    return await this.request<T, U>(HttpMethod.OPTIONS, uri, params);
+  public async options<T>(uri: string, params: {}): ResponseType<T> {
+    return await this.request<T>(HttpMethod.OPTIONS, uri, params);
   }
 
-  public async head<T, U>(uri: string, params: {}): ResponseType<T|U> {
-    return await this.request<T, U>(HttpMethod.HEAD, uri, params);
+  public async head<T>(uri: string, params: {}): ResponseType<T> {
+    return await this.request<T>(HttpMethod.HEAD, uri, params);
   }
 
-  public async connect<T, U>(uri: string, params: {}): ResponseType<T|U> {
-    return await this.request<T, U>(HttpMethod.CONNECT, uri, params);
+  public async connect<T>(uri: string, params: {}): ResponseType<T> {
+    return await this.request<T>(HttpMethod.CONNECT, uri, params);
   }
 
-  public async trace<T, U>(uri: string, params: {}): ResponseType<T|U> {
-    return await this.request<T, U>(HttpMethod.TRACE, uri, params);
+  public async trace<T>(uri: string, params: {}): ResponseType<T> {
+    return await this.request<T>(HttpMethod.TRACE, uri, params);
   }
 }

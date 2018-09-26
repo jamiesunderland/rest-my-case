@@ -1,6 +1,6 @@
 {
   "name": "rest-my-case",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "An http request helper for converting between cases",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

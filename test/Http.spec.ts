@@ -28,7 +28,7 @@ describe('Http', () => {
     describe('when the server has a response', () => {
       test('the server case will be equal to the the clientCase', done => {
         mockServer.get("/test").thenReply(200, JSON.stringify(serverCase));
-        http.get<ClientCase, ErrorCase>("test").then((response: ClientCase) => {
+        http.get<ClientCase>("test").then((response: ClientCase) => {
           expect(response).toMatchObject(clientCase);
           done();
         });
@@ -38,7 +38,7 @@ describe('Http', () => {
     describe('when the response is empty', () => {
       test('the server case will be equal to {}', done => {
         mockServer.get("/test").thenReply(204, JSON.stringify(undefined));
-        http.get<{}, ErrorCase>("test").then((response: {}) => {
+        http.get<{}>("test").then((response: {}) => {
           expect(response).toMatchObject({});
           done();
         });
@@ -48,7 +48,7 @@ describe('Http', () => {
     describe('when the response is erroneous', () => {
       test('the server case will reflect the error type', done => {
         mockServer.get("/test").thenReply(500, JSON.stringify({error_type: 'bad request'}));
-        http.get<{}, ErrorCase>("test").catch((response:ErrorCase) => {
+        http.get<{}>("test").catch((response:ErrorCase) => {
           expect(response).toMatchObject({errorType: 'bad request'});
           done();
         });
@@ -62,7 +62,7 @@ describe('Http', () => {
           .once()
           .thenReply(204, JSON.stringify(undefined));
 
-        http.get<{}, ErrorCase>("test", { queryParam:"test", otherParam: 123 })
+        http.get<{}>("test", { queryParam:"test", otherParam: 123 })
           .then(response => {
             expect(response).toEqual({});
             done();
@@ -76,7 +76,7 @@ describe('Http', () => {
       test('the server case json will be equal to the the clientCase', done => {
         mockServer.post("/test")
           .thenReply(200, JSON.stringify(serverCase));
-        http.post<ClientCase, ErrorCase>("test", clientCase).then((response: ClientCase) => {
+        http.post<ClientCase>("test", clientCase).then((response: ClientCase) => {
           expect(response).toMatchObject(clientCase);
           done();
         });
@@ -87,7 +87,7 @@ describe('Http', () => {
       test('the server case will be equal to {}', done => {
         mockServer.post("/test")
           .thenReply(204, JSON.stringify(undefined));
-        http.post<{}, ErrorCase>("test", clientCase).then((response: {}) => {
+        http.post<{}>("test", clientCase).then((response: {}) => {
           expect(response).toMatchObject({});
           done();
         });
@@ -98,7 +98,7 @@ describe('Http', () => {
       test('the server case will reflect the error type', done => {
         mockServer.post("/test")
           .thenReply(500, JSON.stringify({error_type: 'bad request'}));
-        http.post<{}, ErrorCase>("test", clientCase).catch((response:ErrorCase) => {
+        http.post<{}>("test", clientCase).catch((response:ErrorCase) => {
           expect(response).toMatchObject({errorType: 'bad request'});
           done();
         });
@@ -111,7 +111,7 @@ describe('Http', () => {
       test('the server case json will be equal to the the clientCase', done => {
         mockServer.put("/test")
           .thenReply(200, JSON.stringify(serverCase));
-        http.put<ClientCase, ErrorCase>("test", clientCase).then((response: ClientCase) => {
+        http.put<ClientCase>("test", clientCase).then((response: ClientCase) => {
           expect(response).toMatchObject(clientCase);
           done();
         });
@@ -122,7 +122,7 @@ describe('Http', () => {
       test('the server case will be equal to {}', done => {
         mockServer.put("/test")
           .thenReply(204, JSON.stringify(undefined));
-        http.put<{}, ErrorCase>("test", clientCase).then((response: {}) => {
+        http.put<{}>("test", clientCase).then((response: {}) => {
           expect(response).toMatchObject({});
           done();
         });
@@ -133,7 +133,7 @@ describe('Http', () => {
       test('the server case will reflect the error type', done => {
         mockServer.put("/test")
           .thenReply(500, JSON.stringify({error_type: 'bad request'}));
-        http.put<{}, ErrorCase>("test", clientCase).catch((response:ErrorCase) => {
+        http.put<{}>("test", clientCase).catch((response:ErrorCase) => {
           expect(response).toMatchObject({errorType: 'bad request'});
           done();
         });
@@ -146,7 +146,7 @@ describe('Http', () => {
       test('the server case json will be equal to the the clientCase', done => {
         mockServer.delete("/test")
           .thenReply(200, JSON.stringify(serverCase));
-        http.delete<ClientCase, ErrorCase>("test", clientCase).then((response: ClientCase) => {
+        http.delete<ClientCase>("test", clientCase).then((response: ClientCase) => {
           expect(response).toMatchObject(clientCase);
           done();
         });
@@ -157,7 +157,7 @@ describe('Http', () => {
       test('the server case will be equal to {}', done => {
         mockServer.delete("/test")
           .thenReply(204, JSON.stringify(undefined));
-        http.delete<{}, ErrorCase>("test", clientCase).then((response: {}) => {
+        http.delete<{}>("test", clientCase).then((response: {}) => {
           expect(response).toMatchObject({});
           done();
         });
@@ -168,7 +168,7 @@ describe('Http', () => {
       test('the server case will reflect the error type', done => {
         mockServer.delete("/test")
           .thenReply(500, JSON.stringify({error_type: 'bad request'}));
-        http.delete<{}, ErrorCase>("test", clientCase).catch((response:ErrorCase) => {
+        http.delete<{}>("test", clientCase).catch((response:ErrorCase) => {
           expect(response).toMatchObject({errorType: 'bad request'});
           done();
         });
@@ -181,7 +181,7 @@ describe('Http', () => {
       test('the server case json will be equal to the the clientCase', done => {
         mockServer.patch("/test")
           .thenReply(200, JSON.stringify(serverCase));
-        http.patch<ClientCase, ErrorCase>("test", clientCase).then((response: ClientCase) => {
+        http.patch<ClientCase>("test", clientCase).then((response: ClientCase) => {
           expect(response).toMatchObject(clientCase);
           done();
         });
@@ -192,7 +192,7 @@ describe('Http', () => {
       test('the server case will be equal to {}', done => {
         mockServer.patch("/test")
           .thenReply(204, JSON.stringify(undefined));
-        http.patch<{}, ErrorCase>("test", clientCase).then((response: {}) => {
+        http.patch<{}>("test", clientCase).then((response: {}) => {
           expect(response).toMatchObject({});
           done();
         });
@@ -203,7 +203,7 @@ describe('Http', () => {
       test('the server case will reflect the error type', done => {
         mockServer.patch("/test")
           .thenReply(500, JSON.stringify({error_type: 'bad request'}));
-        http.patch<{}, ErrorCase>("test", clientCase).catch((response:ErrorCase) => {
+        http.patch<{}>("test", clientCase).catch((response:ErrorCase) => {
           expect(response).toMatchObject({errorType: 'bad request'});
           done();
         });

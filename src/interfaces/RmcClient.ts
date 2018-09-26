@@ -17,16 +17,16 @@ export default interface RmcClient {
   requestHook(requestHook: RequestHook):  Http;
   responseHook(responseHook: ResponseHook):  Http;
   responseHook(responseHook: ResponseHook):  Http;
-  request<T, U>(method: HttpMethod, uri: string, query: string | {}): ResponseType<T|U>;
-  get<T, U>(uri: string, query?: string | {}): ResponseType<T|U>;
-  post<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  put<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  patch<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  delete<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  options<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  head<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  connect<T, U>(uri: string, param: {}): ResponseType<T|U>;
-  trace<T, U>(uri: string, param: {}): ResponseType<T|U>;
+  request<T>(method: HttpMethod, uri: string, query: string | {}): ResponseType<T>;
+  get<T>(uri: string, query?: string | {}): ResponseType<T>;
+  post<T>(uri: string, param: {}): ResponseType<T>;
+  put<T>(uri: string, param: {}): ResponseType<T>;
+  patch<T>(uri: string, param: {}): ResponseType<T>;
+  delete<T>(uri: string, param: {}): ResponseType<T>;
+  options<T>(uri: string, param: {}): ResponseType<T>;
+  head<T>(uri: string, param: {}): ResponseType<T>;
+  connect<T>(uri: string, param: {}): ResponseType<T>;
+  trace<T>(uri: string, param: {}): ResponseType<T>;
   convertToServerCase(data: any) : any;
   convertToClientCase(data: any) : any;
 }

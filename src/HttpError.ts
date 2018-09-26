@@ -20,9 +20,9 @@ export default class HttpError implements HttpResponse {
     this.config = config;
   }
 
-  public json<T>(): Promise<HttpErrorMessage<T>> {
+  public json(): Promise<HttpErrorMessage<any>> {
     if (!this.response.json) {
-      const errorMessage: HttpErrorMessage<T> = {
+      const errorMessage: HttpErrorMessage<any> = {
         status: this.response.status,
         message: this.response.statusText,
         payload: {},
@@ -32,14 +32,14 @@ export default class HttpError implements HttpResponse {
     } else {
       return this.response.json()
         .then((json: any) => {
-          let payload: T;
+          let payload: any;
           try {
             payload = this.caseConverter.convertToClientCase(json); 
-            const errorMessage: HttpErrorMessage<T> = {
+            const errorMessage: HttpErrorMessage<any> = {
               status: this.response.status,
               message: this.response.statusText,
               payload,
-              unwrap: (): T => payload   
+              unwrap: (): any => payload   
             };
             throw Http.handleUnwrapping(this.config, errorMessage);
           } catch (error) {
