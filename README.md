@@ -128,3 +128,32 @@ config.requestHook = (http: Http, headers: Headers, data) : Http => {
 let client: RmcClient = Rmc(config);
 export default client;
 ```
+
+#### Writing your own case conversion function
+While you most likely want to use a tried and tested case conversion function, you may need to write your own. RestMyCase utilizes the change-case package to manage case conversions. If you want to write your own, the signature of a case conversion function is `(str: string) => string`. An example of this may be if your organization has a convention about keeping id in caps in camel case. For example user id is written userID, not userId. In that case you might want to write your own case conversion function.
+
+``` javascript
+import Rmc, { HttpConfig, RmcClient } from 'rest-my-case';
+import { noCase } from 'change-case';
+
+const camelCaseWithUpperCaseID = (str) => {
+  return noCase(str)
+    .toLowerCase()
+    .split(' ')
+    .map(s => s == 'id' ? 'ID': s)
+    .map((s, i) => {
+      if (i == 0) {
+        return s;
+      }
+      var firstChar = s[0].toUpperCase();
+      return firstChar + s.substr(1);
+    })
+    .join('');
+}
+
+let config = new HttpConfig();
+// you could do the same thing for converting into the server case
+config.clientCase = camelCaseWithUpperCaseID;
+let client: RmcClient = Rmc(config);
+export default client;
+```
