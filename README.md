@@ -46,7 +46,7 @@ interface SuccessfulResponse {
 }
 
 /* 
-note that the server will receive
+Note that the server will receive
 {
   some_data: 123
 }
@@ -73,17 +73,19 @@ import client from './client';
 
 
 async function queryExamples() {
-    const getSerializedQueryResponse = await client.get<SuccessfulResponse>('abc', {myData: 'foo', otherData: 'bar'});
-    // will make the api request /abc?my_data=foo&other_data=bar
+    // this will make the api request /abc?my_data=foo&other_data=bar
     // you can also define the query string yourself you like by passing in a string
+    const getSerializedQueryResponse = await client.get<SuccessfulResponse>('abc', {myData: 'foo', otherData: 'bar'});
+    // this will make the api request /abc?foo=1&bar=2
     const getStringQueryResponse = await client.get<SuccessfulResponse>('abc', '?foo=1&bar=2');
-    // will make the api request /abc?foo=1&bar=2
 
     // for other types of requests that are not GET requests you can add a query with the query method
     // before invoking the network request method
-    const postWithQueryResponse = await client.query({pageIndex: 10}).post('abc', { myData: 'foo', otherData: 'bar'});
+    
     // this will post {my_data: 'foo', other_data: 'bar' } to /abc?page_index=10
-    // Note: you can of course pass in a raw string to the query method as well
+    const postWithQueryResponse = await client.query({pageIndex: 10}).post('abc', { myData: 'foo', otherData: 'bar'});
+    
+    // Note you can of course pass in a raw string to the query method as well
 }
 
 ```
