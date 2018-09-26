@@ -45,6 +45,14 @@ interface SuccessfulResponse {
   keyNumberTwo: number 
 }
 
+/* 
+note that the expected server response is
+{
+  key_number_one: string,
+  key_number_two: number
+}
+*/
+
 async function requestExamples() {
     const getResponse = await client.get<SuccessfulResponse>('abc');
     const postResponse = await client.post<SuccessfulResponse>('abc', { someData: 123 });
