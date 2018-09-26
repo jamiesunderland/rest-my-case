@@ -110,9 +110,8 @@ async function headerExamples() {
 
 ```
 #### Adding a request hook
+A request hook can be added to the Http object if it is only used once. However, if you want your client to run a response hook with each request you must set it in the HttpConfig.
 ```javascript
-// A request hook can be added to the Http object if it is only used once. However, if you want your client to run a response hook with each request you must set it in the HttpConfig.
-
 // client.ts
 import Rmc, { HttpConfig, RmcClient, Http, Headers } from 'rest-my-case';
 
