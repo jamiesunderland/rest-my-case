@@ -118,8 +118,7 @@ import Rmc, { HttpConfig, RmcClient, Http, Headers } from 'rest-my-case';
 
 let config = new HttpConfig();
 
-// This request hook ensures that if an authorization token exists in localstorage it will be set in the
-// request's headers
+// This request hook ensures that if an authorization token exists in localstorage it will be set in the request's headers
 config.requestHook = (http: Http, headers: Headers, data) : Http => {
   let authorizationToken = localStorage.get('token');
   if (authorizationToken !== undefined) {
