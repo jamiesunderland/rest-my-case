@@ -36,4 +36,22 @@ let client: RmcClient = Rmc(config);
 export default client;
 
 ```
+#### How we might make requests with that client
+```javascript
+import client from './client';
+
+interface SuccessfulResponse {
+  keyNumberOne: string,
+  keyNumberTwo: number 
+}
+
+async function requestExamples() {
+    const getResponse = await client.get<SuccessfulResponse>('abc');
+    const postResponse = await client.post<SuccessfulResponse>('abc', { someData: 123 });
+    const putResponse = await client.put<SuccessfulResponse>('abc', { someData: 123 });
+    const patchResponse = await client.patch<SuccessfulResponse>('abc', { someData: 123 });
+    const deleteResponse = await client.delete<SuccessfulResponse>('abc', { someData: 123 });
+}
+
+```
 
