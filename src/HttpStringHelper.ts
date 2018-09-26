@@ -43,6 +43,9 @@ export default class HttpStringHelper {
       return "";
     }
     if (typeof query === "string") {
+      if (query[0] !== "?") {
+        query = "?" + query;
+      }
       return encodeURI(query as string);
     }
     const serverCaseQuery = this.caseConverter.convertToServerCase(query);
