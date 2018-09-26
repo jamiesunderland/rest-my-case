@@ -67,7 +67,7 @@ async function requestExamples() {
 
 ```
 
-#### Adding query string
+#### Adding a query string
 ```javascript
 import client from './client';
 
