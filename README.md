@@ -89,8 +89,8 @@ async function queryExamples() {
 }
 
 ```
-You can override the headers by calling the headers method prior to the request
 #### Adding custom headers
+You can override the headers by calling the headers method prior to the request
 ```javascript
 import client from './client';
 
