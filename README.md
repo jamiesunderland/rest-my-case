@@ -46,7 +46,11 @@ interface SuccessfulResponse {
 }
 
 /* 
-note that the expected server response is
+note that the server will receive
+{
+  some_data: 123
+}
+and the server response will be 
 {
   key_number_one: string,
   key_number_two: number
