@@ -89,23 +89,22 @@ async function queryExamples() {
 }
 
 ```
+You can override the headers by calling the headers method prior to the request
 #### Adding custom headers
 ```javascript
 import client from './client';
 
-
+/*
+The default headers of HttpConfig are
+  public headers: Headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  };
+*/
 async function headerExamples() {
-    // You can override the headers by calling the headers method prior to the request
     const getSerializedQueryResponse = await client
                                              .headers({'Content-Type': 'application/x-www-form-urlencoded'})
                                              .get<SuccessfulResponse>('abc');
-    /*
-    The default headers are
-      public headers: Headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      };
-    */
 }
 
 ```
