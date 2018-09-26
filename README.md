@@ -125,5 +125,6 @@ config.requestHook = (http: Http, headers: Headers, data) : Http => {
   return http;
 }
 
+let client: RmcClient = Rmc(config);
 export default client;
 ```
