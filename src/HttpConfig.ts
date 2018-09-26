@@ -23,7 +23,7 @@ export default class HttpConfig {
   public uriPrefix: string = '';
   public autoUnwrapPayload: boolean = true;
 
-  public requestHook: RequestHook = (http: Http) => http;
+  public requestHook: RequestHook = (http: Http, headers?: Headers, data?: any) => http;
   public responseHook: ResponseHook = (response: HttpResponse) => response;
 
   public hostname: string = null; 
