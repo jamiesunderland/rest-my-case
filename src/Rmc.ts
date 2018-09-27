@@ -35,8 +35,8 @@ export default (config: HttpConfig = new HttpConfig()): RmcClient  => {
       return Http.default(config).query(query);
     },
 
-    request: <T>(uri: string, query: string | {}): ResponseType<T> => {
-      return Http.default(config).get<T>(uri, query);
+    request: <T>(uri: string, param?: {}): ResponseType<T> => {
+      return Http.default(config).get<T>(uri, param);
     },
 
     get: <T>(uri: string, query?: string | {}): ResponseType<T> => {
