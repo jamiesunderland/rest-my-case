@@ -53,5 +53,6 @@
       "<rootDir>/test/*.spec.(ts|tsx|js)"
     ],
     "testURL": "http://localhost/"
-  }
+  },
+  "keywords": ["url", "rest", "rest", "restful", "change-case", "case-change", "camel-case", "snake-case", "api", "ajax", "fetch", "request", "typescript"]
 }
