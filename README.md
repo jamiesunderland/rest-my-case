@@ -159,7 +159,7 @@ export default client;
 ```
 #### API
 
-###### [RmcClient](https://github.com/jamiesunderland/rest-my-case/blob/master/src/Rmc.ts)
+#### [RmcClient](https://github.com/jamiesunderland/rest-my-case/blob/master/src/Rmc.ts)
 
 | Method/Property | Type | Description |
 | --- | --- | --- |
