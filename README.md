@@ -10,7 +10,7 @@ By default the client case is camelCase and the server case is snake_case. You c
 
 ### How it works
                     
-![alt text](https://github.com/jamiesunderland/rest-my-case/blob/master/diagram.png)
+![alt text](https://raw.githubusercontent.com/jamiesunderland/rest-my-case/master/diagram.png)
 
 ### Installation
 
