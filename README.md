@@ -1,5 +1,7 @@
 ### RestMyCase
-([npm package](https://www.npmjs.com/package/rest-my-case))
+
+[npm package](https://www.npmjs.com/package/rest-my-case)
+
 Rest my case is a tool for making networks requests between two systems with different variable cases written in typesript but can be used in any javascript environment. With rest my case you can decouple your api from the type system of its consumers, or make an external api fit the convention of your client.
 
 An example of this might be that you have a javascript frontend (hopefully using camelCase) and python or ruby backend (using snake_case). However, you're not sure if you should convert your keys to camelCase for your web API. Rest My Case solves this by converting the keys of the outgoing request to the server case and upon receiving the incoming request, it converts the server cased keys back into the client case.
