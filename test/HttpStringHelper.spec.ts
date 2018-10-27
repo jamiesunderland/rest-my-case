@@ -59,7 +59,7 @@ describe('HttpStringHelper', () => {
     test('when the query is a string it returns the uri encoded string', () => {
       let query = "test=test value"
       expect(httpStringHelper.getQuery(query))
-        .toEqual("test=test%20value");
+        .toEqual("?test=test%20value");
     });
 
     test('when the query is an object it case converts and stringifies', () => {
