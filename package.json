@@ -1,11 +1,12 @@
 {
   "name": "rest-my-case",
-  "version": "1.0.3",
+  "version": "1.0.32",
   "description": "An http request helper for converting between cases",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "postinstall": "./node_modules/typescript/bin/tsc",
+    "build": "tsc",
+    "prepare": "npm run build",
     "test": "./node_modules/.bin/jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "test:coverage": "node ./node_modules/jest/bin/jest.js --coverage",
